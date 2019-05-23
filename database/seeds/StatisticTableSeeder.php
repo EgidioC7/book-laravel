@@ -14,9 +14,25 @@ class StatisticTableSeeder extends Seeder
      */
     public function run()
     {
-        Statistic::create([
-            'nbAuthor' => count(Author::all()),
-            'nbBook' => count(Book::all()),
-        ]);
+        $books = Book::all();
+        $bestNote = null;
+        foreach ($books as $book) {
+            $note = null;
+            foreach ($book->authors as $author) {
+                $note += $author->pivot->note;
+            }
+            $note = $note / count($book->authors);
+            if ($bestNote < $note) {
+                $bestNote = $note;
+            }
+        }
+
+        Statistic::create(
+            [
+                'nbAuthor' => count(Author::all()),
+                'nbBook' => count($books),
+                'bestNote' => $bestNote,
+            ]
+        );
     }
 }

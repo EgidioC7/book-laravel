@@ -43,8 +43,9 @@
                     <a class="nav-link" href="{{route('login')}}">Login</a>
                 </li>
             @endif
-            <li class="nav-item"> <a class="nav-link" href="">Nb de livres : {{\App\Http\Controllers\FrontController::getNbBook()}}</a></li>
-            <li class="nav-item"> <a class="nav-link" href="">Nb d'auteurs : {{\App\Http\Controllers\FrontController::getNbAuthor()}}</a></li>
+            <li class="nav-item"> <a class="nav-link" href="" onclick="return false;">Nb de livres : {{\App\Http\Controllers\FrontController::getNbBook()}}</a></li>
+            <li class="nav-item"> <a class="nav-link" href="" onclick="return false;">Meilleur note : {{\App\Http\Controllers\FrontController::getBestNote()}}</a></li>
+            <li class="nav-item"> <a class="nav-link" href="" onclick="return false;">Nb d'auteurs : {{\App\Http\Controllers\FrontController::getNbAuthor()}}</a></li>
         </ul>
     </div>
 </nav>

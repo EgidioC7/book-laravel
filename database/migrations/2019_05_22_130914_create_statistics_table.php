@@ -17,6 +17,7 @@ class CreateStatisticsTable extends Migration
             $table->increments ('id'); // Primary Key
             $table->integer('nbAuthor');
             $table->integer('nbBook');
+            $table->float('bestNote');
             $table->timestamps();
         });
     }

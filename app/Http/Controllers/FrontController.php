@@ -38,7 +38,11 @@ class FrontController extends Controller
         $books = Cache::remember($path, 60 * 24, function () {
             return Book::published()->with('picture', 'authors')->paginate($this->paginate);  //  tous les livres de l'application
         });
+        $exist = $books->toArray()['data'];
 
+        if( empty($exist)){
+            return view('front.index', ['books' => $books]);
+        }
         return view('front.index', ['books' => $this->findBestBook($books)]);
     }
 
@@ -47,6 +51,9 @@ class FrontController extends Controller
     }
     public static function getNbAuthor(){
         return Statistic::authorCount();
+    }
+    public static function getBestNote(){
+        return Statistic::bestNote();
     }
 
     private function findBestBook($books)

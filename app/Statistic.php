@@ -13,4 +13,7 @@ class Statistic extends Model
     public function scopeAuthorCount(){
         return $this->first()->nbAuthor;
     }
+    public function scopeBestNote(){
+        return $this->first()->bestNote;
+    }
 }
